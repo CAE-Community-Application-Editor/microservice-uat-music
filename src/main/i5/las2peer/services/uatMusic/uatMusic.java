@@ -42,7 +42,7 @@ import org.json.simple.*;
  * outsourced to (imported) classes.
  *
  */
-@ServicePath("musicApp/")
+@ServicePath("musicApp")
 @ManualDeployment
 public class uatMusic extends RESTService {
 
@@ -77,9 +77,9 @@ public class uatMusic extends RESTService {
 
   @Api
   @SwaggerDefinition(
-      info = @Info(title = "uat-music", version = "",
-          description = "",
-          termsOfService = "",
+      info = @Info(title = "uat-music", version = "1",
+          description = "Music Service for UAT Test",
+          termsOfService = "LICENSE.txt",
           contact = @Contact(name = "Melisa Cecilia", email = "CAEAddress@gmail.com") ,
           license = @License(name = "BSD",
               url = "https://github.com/testcae/microservice-uat-music/blob/master/LICENSE.txt") ) )

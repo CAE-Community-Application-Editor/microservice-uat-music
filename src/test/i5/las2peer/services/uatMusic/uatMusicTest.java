@@ -50,7 +50,7 @@ public class uatMusicTest {
   // version does not matter in tests
   private static final ServiceNameVersion testTemplateService = new ServiceNameVersion(uatMusic.class.getCanonicalName(),"0.1");
 
-  private static final String mainPath = "musicApp/";
+  private static final String mainPath = "musicApp";
 
 
   /**
