@@ -77,9 +77,9 @@ public class uatMusic extends RESTService {
 
   @Api
   @SwaggerDefinition(
-      info = @Info(title = "uat-music", version = "$Metadata_Version$",
-          description = "$Metadata_Description$",
-          termsOfService = "$Metadata_Terms$",
+      info = @Info(title = "uat-music", version = "",
+          description = "",
+          termsOfService = "",
           contact = @Contact(name = "Melisa Cecilia", email = "CAEAddress@gmail.com") ,
           license = @License(name = "BSD",
               url = "https://github.com/testcae/microservice-uat-music/blob/master/LICENSE.txt") ) )
@@ -88,7 +88,36 @@ public class uatMusic extends RESTService {
 
     private final uatMusic service = (uatMusic) Context.getCurrent().getService();
 
-    
+      /**
+   * 
+   * getMusic
+   *
+   * 
+   *
+   * 
+   * @return Response 
+   * 
+   */
+  @GET
+  @Path("/get")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responseGet")
+  })
+  @ApiOperation(value = "getMusic", notes = " ")
+  public Response getMusic() {
+
+    // responseGet
+    boolean responseGet_condition = true;
+    if(responseGet_condition) {
+      JSONObject resultGet = new JSONObject();
+      return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
+    }
+    return null;
+  }
+
+
 
   }
 
