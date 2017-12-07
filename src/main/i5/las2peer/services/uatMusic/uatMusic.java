@@ -35,7 +35,8 @@ import org.json.simple.parser.ParseException;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Iterator; 
+import java.util.Iterator;  
+import java.io.Serializable;
 
 /**
  *
