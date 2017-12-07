@@ -138,7 +138,7 @@ public class uatMusic extends RESTService {
       PreparedStatement query = conn.prepareStatement("SELECT * FROM uatTest.tblMusic");
       ResultSet result = query.executeQuery();  
  
-            JSONArray jsonResult = new JSONArray();
+      JSONArray jsonResult = new JSONArray();
       while(result.next()) {
         
         // music object
