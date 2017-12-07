@@ -160,7 +160,8 @@ public class uatMusic extends RESTService {
         imageMusicResult.setmusicUrl(musicResult.getmusicUrl());
 
         jsonResult.add(imageMusicResult.toJSON());
-      }
+      } 
+
       // responseGetMusic
       return Response.status(HttpURLConnection.HTTP_OK).entity(jsonResult.toJSONString()).build();
  
