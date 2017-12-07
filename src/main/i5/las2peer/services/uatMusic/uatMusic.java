@@ -136,7 +136,33 @@ public class uatMusic extends RESTService {
       // now process from music database
       Connection conn = service.dbm.getConnection();
       PreparedStatement query = conn.prepareStatement("SELECT * FROM uatTest.tblMusic");
-      ResultSet result = query.executeQuery(); 
+      ResultSet result = query.executeQuery();  
+ 
+            JSONArray jsonResult = new JSONArray();
+      while(result.next()) {
+        
+        // music object
+        classes.music musicResult = new classes().new music();
+        musicResult.setmusicName(result.getString("musicName"));
+        musicResult.setmusicUrl(result.getString("musicUrl"));
+        musicResult.setmusicId(result.getInt("musicId"));
+        musicResult.setimageId(result.getInt("imageId"));
+
+        // music + image
+        classes.image imageResult = imageMap.get(musicResult.getimageId());
+        classes.imageMusic imageMusicResult = new classes().new imageMusic();
+
+        if(imageResult != null) {
+          imageMusicResult.setimageName(imageResult.getimageName());
+          imageMusicResult.setimageUrl(imageResult.getimageUrl());
+        }
+        imageMusicResult.setmusicName(musicResult.getmusicName());
+        imageMusicResult.setmusicUrl(musicResult.getmusicUrl());
+
+        jsonResult.add(imageMusicResult.toJSON());
+      }
+      // responseGetMusic
+      return Response.status(HttpURLConnection.HTTP_OK).entity(jsonResult.toJSONString()).build();
  
 
     } catch (Exception e) {
