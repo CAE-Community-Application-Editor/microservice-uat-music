@@ -192,19 +192,49 @@ public class uatMusic extends RESTService {
   public Response postMusic(String payloadPost) {
     JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
 
+    classes.imageMusic payloadpayloadPostMusicObject = new classes().new imageMusic();
+   try { 
+       payloadpayloadPostMusicObject.fromJSON(payloadPostMusic);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(0).build();
+   }   
+   
+   // get image object to pass to music service
+   classes.image imageObject = new classes().new image();
+   imageObject.setimageId(0);
+   imageObject.setimageName(payloadpayloadPostMusicObject.getimageName());
+   imageObject.setimageUrl(payloadpayloadPostMusicObject.getimageUrl());
+
+   String postImageParameter = imageObject.toJSON().toJSONString();
+
     try {
       Object returnServicePostImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "postImage");
+          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "postImage", new Serializable[] {postImageParameter});
+      int imageId = (int) returnServicePostImage;
+
+      // now process music object
+      Connection conn = service.dbm.getConnection();
+      PreparedStatement query = conn.prepareStatement(
+        "INSERT INTO uatTest.tblMusic(musicName, musicUrl, imageId) VALUES(?,?,?) ");
+      query.setString(1, payloadpayloadPostMusicObject.getmusicName());
+      query.setString(2, payloadpayloadPostMusicObject.getmusicUrl());
+      query.setInt(3, imageId);
+      query.executeUpdate();
+
+      // get id of the new added image
+      ResultSet generatedKeys = query.getGeneratedKeys();
+      if (generatedKeys.next()) {
+        return Response.status(HttpURLConnection.HTTP_OK).entity(generatedKeys.getLong(1)).build();
+      } else {
+        return Response.status(HttpURLConnection.HTTP_OK).entity(0).build();
+      }
+
     } catch (Exception e) {
         e.printStackTrace();
+        return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(0).build();
     }
-    // responsePost
-    boolean responsePost_condition = true;
-    if(responsePost_condition) {
-      String resultPost = "Some String";
-      return Response.status(HttpURLConnection.HTTP_OK).entity(resultPost).build();
-    }
-    return null;
   }
 
 
