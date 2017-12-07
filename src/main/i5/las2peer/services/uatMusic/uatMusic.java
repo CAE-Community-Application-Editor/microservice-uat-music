@@ -95,7 +95,7 @@ public class uatMusic extends RESTService {
    * 
    *
    * 
-   * @return Response 
+   * @return Response Response node get
    * 
    */
   @GET
@@ -103,7 +103,7 @@ public class uatMusic extends RESTService {
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.TEXT_PLAIN)
   @ApiResponses(value = {
-       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responseGet")
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Response node get")
   })
   @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
@@ -111,7 +111,7 @@ public class uatMusic extends RESTService {
     // responseGet
     boolean responseGet_condition = true;
     if(responseGet_condition) {
-      JSONObject resultGet = new JSONObject();
+      JSONObject resultGet = new classes().new imageMusic().toJSON();
       return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
     }
     return null;
@@ -122,7 +122,7 @@ public class uatMusic extends RESTService {
    * postMusic
    *
    * 
-   * @param payloadPost  a JSONObject
+   * @param payloadPost Payload post node a JSONObject
    * 
    * @return Response 
    * 
