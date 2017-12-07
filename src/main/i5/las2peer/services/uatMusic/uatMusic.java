@@ -116,7 +116,12 @@ public class uatMusic extends RESTService {
 
     try {
       Object returnServiceGetImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage");
+          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage"); 
+      HashMap<Integer, classes.image> imageMap = new HashMap<Integer, classes.image>();
+      // put into array
+      JSONParser parser = new JSONParser();
+      JSONArray jsonArray = (JSONArray)parser.parse((String) returnServiceGetImage);
+      Iterator i = jsonArray.iterator();
     } catch (Exception e) {
         e.printStackTrace();
     }
