@@ -168,13 +168,6 @@ public class uatMusic extends RESTService {
     } catch (Exception e) {
         e.printStackTrace();
     }
-    // responseGet
-    boolean responseGet_condition = true;
-    if(responseGet_condition) {
-      JSONObject resultGet = new classes().new imageMusic().toJSON();
-      return Response.status(HttpURLConnection.HTTP_OK).entity(resultGet.toJSONString()).build();
-    }
-    return null;
   }
 
   /**
