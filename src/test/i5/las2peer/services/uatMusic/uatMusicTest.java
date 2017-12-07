@@ -112,6 +112,28 @@ public class uatMusicTest {
     }
   }
 
+  /**
+   * 
+   * Test for the postMusic method.
+   * 
+   */
+  @Test
+  public void testpostMusic() {
+    MiniClient c = new MiniClient();
+    c.setAddressPort(HTTP_ADDRESS, HTTP_PORT);
+    try {
+      JSONObject payloadPost = new JSONObject();
+      c.setLogin(testAgent.getIdentifier(), testPass);
+      ClientResponse result = c.sendRequest("POST", mainPath + "/post", payloadPost.toJSONString(),
+        MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, new HashMap<String,String>());
+      assertTrue(true); // change here
+      System.out.println("Result of 'testpostMusic': " + result.getResponse().trim());
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
+  }
+
 
 
 

@@ -117,6 +117,36 @@ public class uatMusic extends RESTService {
     return null;
   }
 
+  /**
+   * 
+   * postMusic
+   *
+   * 
+   * @param payloadPost  a JSONObject
+   * 
+   * @return Response 
+   * 
+   */
+  @POST
+  @Path("/post")
+  @Produces(MediaType.TEXT_PLAIN)
+  @Consumes(MediaType.TEXT_PLAIN)
+  @ApiResponses(value = {
+       @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "responsePost")
+  })
+  @ApiOperation(value = "postMusic", notes = " ")
+  public Response postMusic(String payloadPost) {
+    JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
+
+    // responsePost
+    boolean responsePost_condition = true;
+    if(responsePost_condition) {
+      String resultPost = "Some String";
+      return Response.status(HttpURLConnection.HTTP_OK).entity(resultPost).build();
+    }
+    return null;
+  }
+
 
 
   }
