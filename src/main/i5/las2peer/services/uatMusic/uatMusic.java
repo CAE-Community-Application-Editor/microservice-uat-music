@@ -194,7 +194,7 @@ public class uatMusic extends RESTService {
 
     classes.imageMusic payloadpayloadPostMusicObject = new classes().new imageMusic();
    try { 
-       payloadpayloadPostMusicObject.fromJSON(payloadPostMusic);
+       payloadpayloadPostMusicObject.fromJSON(payloadPost);
    } catch (Exception e) { 
        e.printStackTrace();
        JSONObject result = new JSONObject();
