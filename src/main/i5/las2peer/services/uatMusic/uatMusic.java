@@ -121,7 +121,22 @@ public class uatMusic extends RESTService {
       // put into array
       JSONParser parser = new JSONParser();
       JSONArray jsonArray = (JSONArray)parser.parse((String) returnServiceGetImage);
-      Iterator i = jsonArray.iterator();
+      Iterator i = jsonArray.iterator(); 
+ 
+// put into map of id and image object
+      while (i.hasNext())
+      {
+          JSONObject jsonObj = (JSONObject) i.next();
+          classes.image imageObj = new classes().new image();
+          imageObj.fromJSON(jsonObj.toJSONString());
+          imageMap.put(imageObj.getimageId(), imageObj);
+          System.out.println(jsonObj);
+      }
+
+      // now process from music database
+      Connection conn = service.dbm.getConnection();
+      PreparedStatement query = conn.prepareStatement("SELECT * FROM uatTest.tblMusic");
+      ResultSet result = query.executeQuery();
     } catch (Exception e) {
         e.printStackTrace();
     }
