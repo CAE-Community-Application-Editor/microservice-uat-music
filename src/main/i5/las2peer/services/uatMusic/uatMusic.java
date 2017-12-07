@@ -111,7 +111,7 @@ public class uatMusic extends RESTService {
   @ApiResponses(value = {
        @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Response node get")
   })
-  @ApiOperation(value = "getMusic", notes = " ")
+  @ApiOperation(value = "getMusic", notes = "Get music from app ")
   public Response getMusic() {
 
     try {
