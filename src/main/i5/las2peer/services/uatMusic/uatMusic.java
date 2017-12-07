@@ -168,6 +168,8 @@ public class uatMusic extends RESTService {
 
     } catch (Exception e) {
         e.printStackTrace();
+      JSONObject result = new JSONObject(); 
+      return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity(result.toJSONString()).build();
     }
   }
 
