@@ -123,7 +123,7 @@ public class uatMusic extends RESTService {
       JSONArray jsonArray = (JSONArray)parser.parse((String) returnServiceGetImage);
       Iterator i = jsonArray.iterator(); 
  
-// put into map of id and image object
+      // put into map of id and image object
       while (i.hasNext())
       {
           JSONObject jsonObj = (JSONObject) i.next();
