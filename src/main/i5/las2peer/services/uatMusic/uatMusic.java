@@ -1,6 +1,6 @@
 package i5.las2peer.services.uatMusic;
 
-
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 
 import javax.ws.rs.DELETE;
@@ -108,6 +108,12 @@ public class uatMusic extends RESTService {
   @ApiOperation(value = "getMusic", notes = " ")
   public Response getMusic() {
 
+    try {
+      Object returnServiceGetImage = Context.getCurrent().invoke(
+          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "getImage");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     // responseGet
     boolean responseGet_condition = true;
     if(responseGet_condition) {
@@ -138,6 +144,12 @@ public class uatMusic extends RESTService {
   public Response postMusic(String payloadPost) {
     JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
 
+    try {
+      Object returnServicePostImage = Context.getCurrent().invoke(
+          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "postImage");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     // responsePost
     boolean responsePost_condition = true;
     if(responsePost_condition) {
