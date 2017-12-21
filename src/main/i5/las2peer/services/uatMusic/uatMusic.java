@@ -213,7 +213,7 @@ public class uatMusic extends RESTService {
 
     try {
       Object returnServicePostImage = Context.getCurrent().invoke(
-          "i5.las2peer.services.uatTestImage.uatTestImage@1.0", "postImage", new Serializable[] {postImageParameter});
+          "i5.las2peer.services.uatTestImage.uatTestImage@4.0", "postImage", new Serializable[] {postImageParameter});
       int imageId = (int) returnServicePostImage;
 
       // now process music object
