@@ -192,8 +192,14 @@ public class uatMusic extends RESTService {
   })
   @ApiOperation(value = "postMusic", notes = " ")
   public Response postMusic(String payloadPost) {
-    JSONObject payloadPost_JSON = (JSONObject) JSONValue.parse(payloadPost);
-
+   classes.imageMusic payloadpayloadPostObject = new classes().new imageMusic();
+   try { 
+       payloadpayloadPostObject.fromJSON(payloadPost);
+   } catch (Exception e) { 
+       e.printStackTrace();
+       JSONObject result = new JSONObject();
+       return Response.status(HttpURLConnection.HTTP_INTERNAL_ERROR).entity("Cannot convert json to object").build();
+   }
     classes.imageMusic payloadpayloadPostMusicObject = new classes().new imageMusic();
    try { 
        payloadpayloadPostMusicObject.fromJSON(payloadPost);

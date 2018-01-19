@@ -61,33 +61,6 @@ public class classes {
 
     public music() {}
     
-    private int musicId;
-
-    public void setmusicId(int setValue) {
-        this.musicId = setValue;
-    }
-
-    public int getmusicId() {
-        return this.musicId;
-    }
-    private String musicName;
-
-    public void setmusicName(String setValue) {
-        this.musicName = setValue;
-    }
-
-    public String getmusicName() {
-        return this.musicName;
-    }
-    private String musicUrl;
-
-    public void setmusicUrl(String setValue) {
-        this.musicUrl = setValue;
-    }
-
-    public String getmusicUrl() {
-        return this.musicUrl;
-    }
     private int imageId;
 
     public void setimageId(int setValue) {
@@ -97,40 +70,14 @@ public class classes {
     public int getimageId() {
         return this.imageId;
     }
+    private int musicId;
 
-    public JSONObject toJSON() {
-
-        JSONObject jo = new JSONObject();
-        jo.put("musicId", this.musicId); 
-        jo.put("musicName", this.musicName); 
-        jo.put("musicUrl", this.musicUrl); 
-        jo.put("imageId", this.imageId); 
-
-        return jo;
+    public void setmusicId(int setValue) {
+        this.musicId = setValue;
     }
 
-    public void fromJSON(String jsonString) throws ParseException {
-        JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(jsonString);
-        this.musicId = ((Long) jsonObject.get("musicId")).intValue(); 
-        this.musicName = (String) jsonObject.get("musicName"); 
-        this.musicUrl = (String) jsonObject.get("musicUrl"); 
-        this.imageId = ((Long) jsonObject.get("imageId")).intValue(); 
-
-    }
-
-}
-    class imageMusic {
-
-    public imageMusic() {}
-    
-    private String musicName;
-
-    public void setmusicName(String setValue) {
-        this.musicName = setValue;
-    }
-
-    public String getmusicName() {
-        return this.musicName;
+    public int getmusicId() {
+        return this.musicId;
     }
     private String musicUrl;
 
@@ -141,6 +88,41 @@ public class classes {
     public String getmusicUrl() {
         return this.musicUrl;
     }
+    private String musicName;
+
+    public void setmusicName(String setValue) {
+        this.musicName = setValue;
+    }
+
+    public String getmusicName() {
+        return this.musicName;
+    }
+
+    public JSONObject toJSON() {
+
+        JSONObject jo = new JSONObject();
+        jo.put("imageId", this.imageId); 
+        jo.put("musicId", this.musicId); 
+        jo.put("musicUrl", this.musicUrl); 
+        jo.put("musicName", this.musicName); 
+
+        return jo;
+    }
+
+    public void fromJSON(String jsonString) throws ParseException {
+        JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(jsonString);
+        this.imageId = ((Long) jsonObject.get("imageId")).intValue(); 
+        this.musicId = ((Long) jsonObject.get("musicId")).intValue(); 
+        this.musicUrl = (String) jsonObject.get("musicUrl"); 
+        this.musicName = (String) jsonObject.get("musicName"); 
+
+    }
+
+}
+    class imageMusic {
+
+    public imageMusic() {}
+    
     private String imageName;
 
     public void setimageName(String setValue) {
@@ -149,6 +131,15 @@ public class classes {
 
     public String getimageName() {
         return this.imageName;
+    }
+    private String musicUrl;
+
+    public void setmusicUrl(String setValue) {
+        this.musicUrl = setValue;
+    }
+
+    public String getmusicUrl() {
+        return this.musicUrl;
     }
     private String imageUrl;
 
@@ -159,24 +150,33 @@ public class classes {
     public String getimageUrl() {
         return this.imageUrl;
     }
+    private String musicName;
+
+    public void setmusicName(String setValue) {
+        this.musicName = setValue;
+    }
+
+    public String getmusicName() {
+        return this.musicName;
+    }
 
     public JSONObject toJSON() {
 
         JSONObject jo = new JSONObject();
-        jo.put("musicName", this.musicName); 
-        jo.put("musicUrl", this.musicUrl); 
         jo.put("imageName", this.imageName); 
+        jo.put("musicUrl", this.musicUrl); 
         jo.put("imageUrl", this.imageUrl); 
+        jo.put("musicName", this.musicName); 
 
         return jo;
     }
 
     public void fromJSON(String jsonString) throws ParseException {
         JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(jsonString);
-        this.musicName = (String) jsonObject.get("musicName"); 
-        this.musicUrl = (String) jsonObject.get("musicUrl"); 
         this.imageName = (String) jsonObject.get("imageName"); 
+        this.musicUrl = (String) jsonObject.get("musicUrl"); 
         this.imageUrl = (String) jsonObject.get("imageUrl"); 
+        this.musicName = (String) jsonObject.get("musicName"); 
 
     }
 
